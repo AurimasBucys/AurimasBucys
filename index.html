@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurimas Bučys — Creative Performance Marketer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e0e;
+      --bg2: #161616;
+      --bg3: #1e1e1e;
+      --text: #f0ece3;
+      --muted: #888;
+      --accent: #f4a827;
+      --accent2: #e8521a;
+      --border: rgba(240, 236, 227, 0.1);
+      --card-bg: #141414;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ---- NOISE OVERLAY ---- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(14,14,14,0.92);
+      backdrop-filter: blur(12px);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 3rem 5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 400px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0e0e0e;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-graphic {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(244,168,39,0.12) 0%, transparent 70%),
+                  radial-gradient(ellipse at 30% 80%, rgba(232,82,26,0.08) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+    .hero-stat-stack {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .hero-stat {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      min-width: 240px;
+      position: relative;
+      overflow: hidden;
+      transform: translateX(0);
+      animation: floatIn 0.8s ease both;
+    }
+    .hero-stat:nth-child(1) { animation-delay: 0.2s; transform: rotate(-1deg); }
+    .hero-stat:nth-child(2) { animation-delay: 0.4s; transform: rotate(0.5deg); margin-left: 2rem; }
+    .hero-stat:nth-child(3) { animation-delay: 0.6s; transform: rotate(-0.5deg); }
+    .hero-stat::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .stat-value span { color: var(--accent); }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(30px) rotate(var(--r, 0deg)); }
+      to { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
+    }
+
+    /* ---- MARQUEE ---- */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .marquee-item {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      white-space: nowrap;
+    }
+    .marquee-item::after {
+      content: '✦';
+      color: var(--accent);
+      font-size: 0.5rem;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ---- SECTIONS ---- */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+    .section-pad { padding: 7rem 0; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--accent);
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      color: var(--muted);
+      max-width: 500px;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* ---- PROCESS ---- */
+    .process-section { background: var(--bg2); }
+    .process-header { margin-bottom: 4rem; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .process-step {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+      transition: background 0.3s;
+    }
+    .process-step:last-child { border-right: none; }
+    .process-step:hover { background: var(--bg3); }
+    .step-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(244,168,39,0.12);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      transition: color 0.3s;
+    }
+    .process-step:hover .step-num { color: rgba(244,168,39,0.25); }
+    .step-icon {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .step-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ---- WORK ---- */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .case-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .case-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .case-card.wide { grid-column: span 2; }
+    .card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: var(--bg3);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-img-placeholder {
+      width: 100%;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+    .ph-memby::before { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+    .ph-ads::before { background: linear-gradient(135deg, #1a0a00 0%, #2d1200 50%, #4a1f00 100%); }
+    .ph-lume::before { background: linear-gradient(135deg, #0a0a1a 0%, #1a0f2e 50%, #2d1a4a 100%); }
+    .ph-icon { position: relative; z-index: 1; }
+
+    /* AD GRID inside card */
+    .ad-grid-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 1.5rem;
+      background: var(--bg3);
+      height: 220px;
+    }
+    .ad-thumb {
+      background: #222;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .ad-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--bg3), #2a2a2a);
+    }
+    .ad-thumb span { position: relative; z-index: 1; }
+    /* Image placeholders that would be replaced with real ad images */
+    .ad-thumb.ad1::after { content: 'AD'; position: absolute; bottom: 4px; right: 6px; font-size: 0.5rem; letter-spacing: 0.15em; color: var(--muted); }
+    .ad-thumb-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 0.4rem; font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: center; }
+
+    .card-body { padding: 1.75rem 2rem; }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .card-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(244,168,39,0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+    .card-year {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .card-insights {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .insight-pill {
+      font-size: 0.7rem;
+      color: var(--muted);
+      background: var(--bg3);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+    }
+    .card-arrow {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 1.25rem;
+      transition: gap 0.2s;
+    }
+    .case-card:hover .card-arrow { gap: 0.7rem; }
+
+    /* ---- ABOUT ---- */
+    .about-section { background: var(--bg2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-right { }
+    .skill-block { margin-bottom: 2.5rem; }
+    .skill-block-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-tag {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ---- CONTACT ---- */
+    .contact-section {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .contact-left .section-title { margin-bottom: 1.5rem; }
+    .contact-left p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+    .contact-link-icon {
+      font-size: 1.1rem;
+      width: 1.5rem;
+      text-align: center;
+    }
+    .contact-link-label {
+      flex: 1;
+    }
+    .contact-link-arrow { color: var(--muted); font-size: 0.8rem; }
+    .contact-link:hover .contact-link-arrow { color: var(--accent); }
+
+    /* Big email display */
+    .contact-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .big-email {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--text);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: 0.15em;
+      opacity: 0.15;
+      user-select: none;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+    footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .footer-mark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    .footer-mark span { color: var(--accent); }
+
+    /* ---- SCROLL ANIMATIONS ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 7rem 1.5rem 3rem; }
+      .hero-right { display: none; }
+      .container { padding: 0 1.5rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-step:nth-child(2) { border-right: none; }
+      .process-step { border-bottom: 1px solid var(--border); }
+      .process-step:nth-child(3), .process-step:nth-child(4) { border-bottom: none; }
+      .work-grid { grid-template-columns: 1fr; }
+      .case-card.wide { grid-column: span 1; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-right { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.2rem; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .process-step:last-child { border-bottom: none; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">AB<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#process">Process</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Creative Performance Marketer</p>
+    <h1>Ads that <em>convert</em>.<br>Strategy that sticks.</h1>
+    <p class="hero-sub">
+      I build paid social campaigns rooted in deep customer research, not guesswork. Meta Ads specialist with hands-on e-commerce experience and a structured creative process that shapes strategy before a single ad is made.
+    </p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn btn-primary">See my work →</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-graphic"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-stat-stack">
+      <div class="hero-stat">
+        <div class="stat-label">Primary Platform</div>
+        <div class="stat-value">Meta <span>Ads</span></div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-label">Specialisation</div>
+        <div class="stat-value">D2C <span>/ Shopify</span></div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-label">Focus</div>
+        <div class="stat-value">Direct <span>Response</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <div class="marquee-item">Meta Ads</div>
+    <div class="marquee-item">Creative Strategy</div>
+    <div class="marquee-item">Direct Response</div>
+    <div class="marquee-item">Customer Research</div>
+    <div class="marquee-item">Shopify</div>
+    <div class="marquee-item">Paid Social</div>
+    <div class="marquee-item">Ad Copywriting</div>
+    <div class="marquee-item">Funnel Analysis</div>
+    <div class="marquee-item">Creative Briefs</div>
+    <div class="marquee-item">Audience Targeting</div>
+    <div class="marquee-item">D2C E-commerce</div>
+    <div class="marquee-item">Performance Marketing</div>
+    <div class="marquee-item">Hook Writing</div>
+    <div class="marquee-item">Media Buying</div>
+    <div class="marquee-item">Meta Ads</div>
+    <div class="marquee-item">Creative Strategy</div>
+    <div class="marquee-item">Direct Response</div>
+    <div class="marquee-item">Customer Research</div>
+    <div class="marquee-item">Shopify</div>
+    <div class="marquee-item">Paid Social</div>
+    <div class="marquee-item">Ad Copywriting</div>
+    <div class="marquee-item">Funnel Analysis</div>
+    <div class="marquee-item">Creative Briefs</div>
+    <div class="marquee-item">Audience Targeting</div>
+    <div class="marquee-item">D2C E-commerce</div>
+    <div class="marquee-item">Performance Marketing</div>
+    <div class="marquee-item">Hook Writing</div>
+    <div class="marquee-item">Media Buying</div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process-section section-pad" id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="section-label">My Process</div>
+      <h2 class="section-title">Research before creative.<br>Always.</h2>
+      <p class="section-desc">Most agencies jump straight to making ads. I build a full strategic foundation first — so every creative decision has a reason behind it.</p>
+    </div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-icon">🎯</div>
+        <div class="step-title">Customer Avatar</div>
+        <div class="step-desc">Deep profiling of the ideal buyer — demographics, frustrations, desires, objections, language they use online. Not assumptions. Research.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-icon">📊</div>
+        <div class="step-title">Market Research</div>
+        <div class="step-desc">Competitor ads, winning angles, market sophistication level. I find what's already working before proposing anything new.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-icon">💡</div>
+        <div class="step-title">Offer Brief</div>
+        <div class="step-desc">Positioning the product against the real alternative in the customer's mind. What makes it worth buying right now, for this person.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-icon">🔁</div>
+        <div class="step-title">Belief-Shift Map</div>
+        <div class="step-desc">Mapping the mental journey from cold audience to buyer — what beliefs need to shift, and what creative angles address each one.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section-pad" id="work">
+  <div class="container">
+    <div class="reveal" style="margin-bottom: 3.5rem;">
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Campaigns & Case Studies</h2>
+      <p class="section-desc">Real briefs, real strategy, real output. Click any project to see the thinking behind it.</p>
+    </div>
+
+    <div class="work-grid">
+
+      <!-- MEMBY CASE STUDY - WIDE -->
+      <a href="#memby-modal" class="case-card wide reveal" onclick="openModal('memby'); return false;">
+        <div class="card-img-placeholder ph-memby">
+          <span class="ph-icon">📚</span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Case Study</span>
+            <span class="card-year">2025</span>
+          </div>
+          <div class="card-title">Memby / Digiklasė — Media Buying Assignment</div>
+          <div class="card-desc">
+            A full take-home assignment for an EdTech brand: competitive ad analysis, audience segmentation, creative briefs for three distinct customer avatars, and a funnel breakdown. Delivered under real hiring conditions.
+          </div>
+          <div class="card-insights">
+            <span class="insight-pill">Ad Analysis</span>
+            <span class="insight-pill">3 Creative Briefs</span>
+            <span class="insight-pill">Funnel Mapping</span>
+            <span class="insight-pill">Audience Segmentation</span>
+            <span class="insight-pill">EdTech</span>
+          </div>
+          <div class="card-arrow">View case study →</div>
+        </div>
+      </a>
+
+      <!-- STATIC ADS -->
+      <a href="#ads-modal" class="case-card reveal" onclick="openModal('ads'); return false;">
+        <div class="ad-grid-preview">
+          <div class="ad-thumb ad1"><span>🛒</span><div class="ad-thumb-label">Hook</div></div>
+          <div class="ad-thumb"><span>💥</span><div class="ad-thumb-label">Pain</div></div>
+          <div class="ad-thumb"><span>✅</span><div class="ad-thumb-label">Solution</div></div>
+          <div class="ad-thumb"><span>🎯</span><div class="ad-thumb-label">CTA</div></div>
+          <div class="ad-thumb"><span>⚡</span><div class="ad-thumb-label">Urgency</div></div>
+          <div class="ad-thumb"><span>🔥</span><div class="ad-thumb-label">Social</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Creative</span>
+            <span class="card-year">2025</span>
+          </div>
+          <div class="card-title">Static Ad Concepts — D2C E-commerce</div>
+          <div class="card-desc">
+            Static ad concepts built using AI tools and direct response principles. Hook construction, visual attention, and copy that earns the click.
+          </div>
+          <div class="card-insights">
+            <span class="insight-pill">Hook Testing</span>
+            <span class="insight-pill">Awareness Stages</span>
+            <span class="insight-pill">D2C</span>
+          </div>
+          <div class="card-arrow">See the ads →</div>
+        </div>
+      </a>
+
+      <!-- LUMÉ STORE -->
+      <a href="https://lume-store.myshopify.com" target="_blank" class="case-card reveal">
+        <div class="card-img-placeholder ph-lume">
+          <span class="ph-icon">🕯️</span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Full Funnel</span>
+            <span class="card-year">2025</span>
+          </div>
+          <div class="card-title">LUMÉ — Shopify Brand Build</div>
+          <div class="card-desc">
+            End-to-end Shopify store built as a course final project. Product pages, homepage, SEO, review system, and brand story — designed as a complete D2C funnel, not just a storefront.
+          </div>
+          <div class="card-insights">
+            <span class="insight-pill">Shopify</span>
+            <span class="insight-pill">Brand Strategy</span>
+            <span class="insight-pill">CRO</span>
+            <span class="insight-pill">SEO</span>
+          </div>
+          <div class="card-arrow">Visit store →</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section section-pad" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title" style="margin-bottom: 1.5rem;">I treat ads as a<br>business problem.</h2>
+        <p>I'm Aurimas, a performance marketer based in Vilnius. I got into this properly by running my own Shopify stores and managing Meta Ads with real money at stake. That experience taught me more than any course could about what actually makes people click and buy.</p>
+        <p>I went through the <strong>FastTrack LT digital marketing bootcamp</strong> to fill in the technical gaps and sharpen my paid media knowledge. Not long after, I got a take-home assignment from <strong>Memby/Digiklasė</strong> and used it as a chance to show what a structured research process looks like in practice.</p>
+        <p>The thing that drives most of my work is starting with the customer, not the creative. Before I open any tool, I want to know who I'm talking to, what they already believe, and what needs to shift. That approach shapes everything downstream and it's what makes the difference between an ad that looks good and one that actually works.</p>
+        <a href="#contact" class="btn btn-ghost" style="margin-top: 1.5rem; display: inline-flex;">Let's talk →</a>
+      </div>
+      <div class="about-right reveal">
+        <div class="skill-block">
+          <div class="skill-block-title">Platforms & Tools</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Meta Ads Manager</span>
+            <span class="skill-tag">Google Ads</span>
+            <span class="skill-tag">Shopify</span>
+            <span class="skill-tag">Meta Business Suite</span>
+            <span class="skill-tag">Claude</span>
+            <span class="skill-tag">Higgsfield</span>
+            <span class="skill-tag">Nano Banana Pro</span>
+            <span class="skill-tag">Canva</span>
+            <span class="skill-tag">Google Analytics</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-block-title">Specialisations</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Paid Social</span>
+            <span class="skill-tag">Direct Response Marketing</span>
+            <span class="skill-tag">D2C E-commerce</span>
+            <span class="skill-tag">Creative Strategy</span>
+            <span class="skill-tag">Audience Research</span>
+            <span class="skill-tag">Ad Copywriting</span>
+            <span class="skill-tag">Funnel Analysis</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-block-title">Background</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Shopify Dropshipping</span>
+            <span class="skill-tag">FastTrack LT Bootcamp</span>
+            <span class="skill-tag">Vilnius, Lithuania</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section section-pad" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let's build something that converts.</h2>
+        <p>Available for full-time performance marketing and paid social roles in Vilnius. Open to agency and in-house positions. Fast to respond, direct to communicate.</p>
+        <div class="contact-links">
+          <a href="mailto:aurimas@email.com" class="contact-link">
+            <span class="contact-link-icon">✉️</span>
+            <span class="contact-link-label">aurimas@email.com</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="https://linkedin.com/in/aurimas" target="_blank" class="contact-link">
+            <span class="contact-link-icon">💼</span>
+            <span class="contact-link-label">LinkedIn Profile</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="#" class="contact-link" onclick="downloadCV(); return false;">
+            <span class="contact-link-icon">📄</span>
+            <span class="contact-link-label">Download CV</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="big-email">AURIMAS BUČYS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Aurimas Bučys. Vilnius, Lithuania.</p>
+  <div class="footer-mark">AB<span>.</span></div>
+</footer>
+
+<!-- MODAL OVERLAY -->
+<div id="modal-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:999; overflow-y:auto; backdrop-filter:blur(8px);" onclick="closeModal(event)">
+  <div id="modal-box" style="max-width:760px; margin:5vh auto 5vh; background:var(--card-bg); border:1px solid var(--border); border-radius:6px; padding:3rem; position:relative;" onclick="event.stopPropagation()">
+    <button onclick="closeModal()" style="position:absolute; top:1.5rem; right:1.5rem; background:none; border:1px solid var(--border); color:var(--muted); padding:0.4rem 0.8rem; border-radius:2px; cursor:pointer; font-family:'Outfit',sans-serif; font-size:0.8rem;">✕ Close</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+  // NAV scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Marquee - items already doubled in HTML for seamless loop
+
+  // CV download placeholder
+  function downloadCV() {
+    alert('CV coming soon — for now, reach out directly via email or LinkedIn.');
+  }
+
+  // Modal content
+  const modalContent = {
+    memby: `
+      <div style="margin-bottom:0.5rem;">
+        <span style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);background:rgba(244,168,39,0.1);padding:0.2rem 0.6rem;border-radius:2px;">Case Study · 2026</span>
+      </div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;line-height:1.2;margin:1rem 0 0.75rem;">Memby / Digiklasė</h2>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem;line-height:1.7;">A real take-home assignment submitted as part of a media buyer hiring process for an EdTech platform serving Lithuanian learners.</p>
+
+      <div style="border-left:3px solid var(--accent);padding-left:1.25rem;margin-bottom:2rem;">
+        <p style="font-size:0.8rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem;">The Challenge</p>
+        <p style="font-size:0.92rem;line-height:1.7;">Analyse the brand's existing ad creative, identify what's working and what isn't, define target audiences, and produce three complete creative briefs — each targeting a different customer avatar.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
+        <div style="background:var(--bg3);padding:1.25rem;border-radius:3px;border:1px solid var(--border);">
+          <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Deliverable 1</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;">Competitive Ad Analysis</div>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;line-height:1.6;">Breakdown of their current creative — hooks, angles, what objections each ad addresses, where the funnel breaks down.</p>
+        </div>
+        <div style="background:var(--bg3);padding:1.25rem;border-radius:3px;border:1px solid var(--border);">
+          <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Deliverable 2</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;">3 Customer Avatars</div>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;line-height:1.6;">Distinct audience segments with different motivations, awareness levels, and messaging requirements.</p>
+        </div>
+        <div style="background:var(--bg3);padding:1.25rem;border-radius:3px;border:1px solid var(--border);">
+          <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Deliverable 3</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;">Creative Briefs ×3</div>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;line-height:1.6;">Full briefs for each avatar: hook, angle, format, messaging, CTA — ready for a creative to execute.</p>
+        </div>
+        <div style="background:var(--bg3);padding:1.25rem;border-radius:3px;border:1px solid var(--border);">
+          <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Deliverable 4</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;">Funnel Analysis</div>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;line-height:1.6;">Mapping the full customer journey from cold ad to conversion — identifying drop-off points and improvement opportunities.</p>
+        </div>
+      </div>
+
+      <div style="background:rgba(244,168,39,0.06);border:1px solid rgba(244,168,39,0.2);border-radius:3px;padding:1.25rem;margin-bottom:1.5rem;">
+        <p style="font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem;">Outcome</p>
+        <p style="font-size:0.9rem;line-height:1.7;">Received a constructive rejection with an explicit invitation to stay in touch — the team noted the quality of strategic thinking in the submission.</p>
+      </div>
+    `,
+    ads: `
+      <div style="margin-bottom:0.5rem;">
+        <span style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);background:rgba(244,168,39,0.1);padding:0.2rem 0.6rem;border-radius:2px;">Creative · 2026</span>
+      </div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;line-height:1.2;margin:1rem 0 0.75rem;">Static Ad Concepts</h2>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem;line-height:1.7;">A collection of static ad concepts built using AI tools and direct response principles. The focus is on hook construction, visual attention, and copy that earns the click.</p>
+
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.5rem;">Each concept here starts from a customer insight, not a blank canvas. The creative choices follow from research into what the audience cares about and what they're skeptical of.</p>
+
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:1.5rem;margin-bottom:2rem;">
+        <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">The Framework Behind Each Ad</div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;min-width:2rem;">01</span>
+            <div><strong style="font-size:0.85rem;">Who is seeing this?</strong><p style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Cold / warm / retargeting — each requires a completely different approach.</p></div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;min-width:2rem;">02</span>
+            <div><strong style="font-size:0.85rem;">What belief needs to shift?</strong><p style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Mapped from the Belief-Shift framework — not generic benefit statements.</p></div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;min-width:2rem;">03</span>
+            <div><strong style="font-size:0.85rem;">What's the hook and why?</strong><p style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Pattern interrupt + relevance to avatar's specific situation.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ad image upload area -->
+      <div style="border:2px dashed var(--border);border-radius:4px;padding:3rem;text-align:center;margin-bottom:1.5rem;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">🖼️</div>
+        <p style="font-size:0.85rem;color:var(--muted);">Upload your ad images here in the HTML file.</p>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:0.4rem;">Replace this placeholder with: &lt;img src="ads/ad1.jpg"&gt; etc.</p>
+      </div>
+    `
+  };
+
+  function openModal(id) {
+    document.getElementById('modal-content').innerHTML = modalContent[id];
+    document.getElementById('modal-overlay').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) {
+    if (!e || e.target === document.getElementById('modal-overlay')) {
+      document.getElementById('modal-overlay').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+</body>
+</html>
