@@ -33,7 +33,6 @@
       overflow-x: hidden;
     }
 
-    /* ---- NOISE OVERLAY ---- */
     body::before {
       content: '';
       position: fixed;
@@ -44,12 +43,9 @@
       opacity: 0.35;
     }
 
-    /* ---- NAV ---- */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 1.25rem 3rem;
       display: flex;
@@ -83,7 +79,6 @@
     }
     .nav-links a:hover { color: var(--accent); }
 
-    /* ---- HERO ---- */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -124,10 +119,7 @@
       letter-spacing: -0.02em;
       margin-bottom: 1.5rem;
     }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
     .hero-sub {
       font-size: 1rem;
       color: var(--muted);
@@ -152,16 +144,9 @@
       transition: all 0.25s;
       border: none;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: #0e0e0e;
-    }
+    .btn-primary { background: var(--accent); color: #0e0e0e; }
     .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
     .hero-right {
@@ -202,7 +187,6 @@
       min-width: 240px;
       position: relative;
       overflow: hidden;
-      transform: translateX(0);
       animation: floatIn 0.8s ease both;
     }
     .hero-stat:nth-child(1) { animation-delay: 0.2s; transform: rotate(-1deg); }
@@ -211,10 +195,8 @@
     .hero-stat::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
       background: var(--accent);
     }
     .stat-label {
@@ -233,11 +215,10 @@
     .stat-value span { color: var(--accent); }
 
     @keyframes floatIn {
-      from { opacity: 0; transform: translateY(30px) rotate(var(--r, 0deg)); }
-      to { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ---- MARQUEE ---- */
     .marquee-wrap {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -264,17 +245,12 @@
       gap: 2.5rem;
       white-space: nowrap;
     }
-    .marquee-item::after {
-      content: '✦';
-      color: var(--accent);
-      font-size: 0.5rem;
-    }
+    .marquee-item::after { content: '✦'; color: var(--accent); font-size: 0.5rem; }
     @keyframes marquee {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
 
-    /* ---- SECTIONS ---- */
     section { position: relative; z-index: 1; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
     .section-pad { padding: 7rem 0; }
@@ -304,14 +280,8 @@
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
-    .section-desc {
-      color: var(--muted);
-      max-width: 500px;
-      font-size: 0.95rem;
-      line-height: 1.75;
-    }
+    .section-desc { color: var(--muted); max-width: 500px; font-size: 0.95rem; line-height: 1.75; }
 
-    /* ---- PROCESS ---- */
     .process-section { background: var(--bg2); }
     .process-header { margin-bottom: 4rem; }
     .process-steps {
@@ -340,29 +310,11 @@
       transition: color 0.3s;
     }
     .process-step:hover .step-num { color: rgba(244,168,39,0.25); }
-    .step-icon {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-    }
-    .step-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
-    .step-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
+    .step-icon { font-size: 1.4rem; margin-bottom: 1rem; }
+    .step-title { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.75rem; color: var(--text); }
+    .step-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
 
-    /* ---- WORK ---- */
-    .work-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .case-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -374,20 +326,9 @@
       color: inherit;
       display: block;
     }
-    .case-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
+    .case-card:hover { border-color: var(--accent); transform: translateY(-4px); }
     .case-card.wide { grid-column: span 2; }
-    .card-img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-      background: var(--bg3);
-      position: relative;
-      overflow: hidden;
-    }
+
     .card-img-placeholder {
       width: 100%;
       height: 220px;
@@ -398,53 +339,31 @@
       position: relative;
       overflow: hidden;
     }
-    .card-img-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-    }
+    .card-img-placeholder::before { content: ''; position: absolute; inset: 0; }
     .ph-memby::before { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
-    .ph-ads::before { background: linear-gradient(135deg, #1a0a00 0%, #2d1200 50%, #4a1f00 100%); }
     .ph-lume::before { background: linear-gradient(135deg, #0a0a1a 0%, #1a0f2e 50%, #2d1a4a 100%); }
     .ph-icon { position: relative; z-index: 1; }
 
-    /* AD GRID inside card */
     .ad-grid-preview {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      padding: 1.5rem;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 6px;
+      padding: 1rem;
       background: var(--bg3);
-      height: 220px;
+      height: 200px;
     }
-    .ad-thumb {
-      background: #222;
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      position: relative;
-      overflow: hidden;
+    .ad-thumb { border-radius: 3px; overflow: hidden; position: relative; }
+    .ad-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s;
     }
-    .ad-thumb::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--bg3), #2a2a2a);
-    }
-    .ad-thumb span { position: relative; z-index: 1; }
-    /* Image placeholders that would be replaced with real ad images */
-    .ad-thumb.ad1::after { content: 'AD'; position: absolute; bottom: 4px; right: 6px; font-size: 0.5rem; letter-spacing: 0.15em; color: var(--muted); }
-    .ad-thumb-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 0.4rem; font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: center; }
+    .case-card:hover .ad-thumb img { transform: scale(1.05); }
 
     .card-body { padding: 1.75rem 2rem; }
-    .card-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
+    .card-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
     .card-tag {
       font-size: 0.65rem;
       letter-spacing: 0.15em;
@@ -454,28 +373,10 @@
       padding: 0.2rem 0.6rem;
       border-radius: 2px;
     }
-    .card-year {
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-    .card-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 0.6rem;
-      line-height: 1.25;
-    }
-    .card-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 1.25rem;
-    }
-    .card-insights {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
+    .card-year { font-size: 0.7rem; color: var(--muted); }
+    .card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.6rem; line-height: 1.25; }
+    .card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+    .card-insights { display: flex; gap: 0.5rem; flex-wrap: wrap; }
     .insight-pill {
       font-size: 0.7rem;
       color: var(--muted);
@@ -497,22 +398,10 @@
     }
     .case-card:hover .card-arrow { gap: 0.7rem; }
 
-    /* ---- ABOUT ---- */
     .about-section { background: var(--bg2); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .about-text p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
     .about-text p strong { color: var(--text); font-weight: 500; }
-    .about-right { }
     .skill-block { margin-bottom: 2.5rem; }
     .skill-block-title {
       font-family: 'Syne', sans-serif;
@@ -522,11 +411,7 @@
       color: var(--accent);
       margin-bottom: 1rem;
     }
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .skill-tag {
       font-size: 0.78rem;
       padding: 0.35rem 0.9rem;
@@ -537,29 +422,11 @@
     }
     .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ---- CONTACT ---- */
-    .contact-section {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
+    .contact-section { background: var(--bg); border-top: 1px solid var(--border); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .contact-left .section-title { margin-bottom: 1.5rem; }
-    .contact-left p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 2rem;
-    }
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .contact-left p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
     .contact-link {
       display: flex;
       align-items: center;
@@ -572,28 +439,12 @@
       border-radius: 4px;
       transition: all 0.2s;
     }
-    .contact-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateX(4px);
-    }
-    .contact-link-icon {
-      font-size: 1.1rem;
-      width: 1.5rem;
-      text-align: center;
-    }
-    .contact-link-label {
-      flex: 1;
-    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
+    .contact-link-icon { font-size: 1.1rem; width: 1.5rem; text-align: center; }
+    .contact-link-label { flex: 1; }
     .contact-link-arrow { color: var(--muted); font-size: 0.8rem; }
     .contact-link:hover .contact-link-arrow { color: var(--accent); }
-
-    /* Big email display */
-    .contact-right {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .contact-right { display: flex; align-items: center; justify-content: center; }
     .big-email {
       font-family: 'Syne', sans-serif;
       font-size: clamp(1.1rem, 2.5vw, 1.6rem);
@@ -606,7 +457,6 @@
       user-select: none;
     }
 
-    /* ---- FOOTER ---- */
     footer {
       padding: 2rem 3rem;
       display: flex;
@@ -616,31 +466,13 @@
       position: relative;
       z-index: 1;
     }
-    footer p {
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-    .footer-mark {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--text);
-    }
+    footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+    .footer-mark { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text); }
     .footer-mark span { color: var(--accent); }
 
-    /* ---- SCROLL ANIMATIONS ---- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ---- RESPONSIVE ---- */
     @media (max-width: 900px) {
       nav { padding: 1.25rem 1.5rem; }
       .nav-links { gap: 1.25rem; }
@@ -654,24 +486,24 @@
       .process-step:nth-child(3), .process-step:nth-child(4) { border-bottom: none; }
       .work-grid { grid-template-columns: 1fr; }
       .case-card.wide { grid-column: span 1; }
+      .ad-grid-preview { grid-template-columns: repeat(3, 1fr); height: 160px; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
       .contact-right { display: none; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
     }
-
     @media (max-width: 600px) {
       .hero h1 { font-size: 2.2rem; }
       .process-steps { grid-template-columns: 1fr; }
       .process-step { border-right: none; border-bottom: 1px solid var(--border); }
       .process-step:last-child { border-bottom: none; }
       .nav-links { display: none; }
+      .ad-grid-preview { grid-template-columns: repeat(3, 1fr); height: 130px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">AB<span>.</span></a>
   <ul class="nav-links">
@@ -682,7 +514,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <p class="hero-tag">Creative Performance Marketer</p>
@@ -715,9 +546,8 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-wrap">
-  <div class="marquee-track" id="marquee">
+  <div class="marquee-track">
     <div class="marquee-item">Meta Ads</div>
     <div class="marquee-item">Creative Strategy</div>
     <div class="marquee-item">Direct Response</div>
@@ -749,13 +579,12 @@
   </div>
 </div>
 
-<!-- PROCESS -->
 <section class="process-section section-pad" id="process">
   <div class="container">
     <div class="process-header reveal">
       <div class="section-label">My Process</div>
       <h2 class="section-title">Research before creative.<br>Always.</h2>
-      <p class="section-desc">Most agencies jump straight to making ads. I build a full strategic foundation first — so every creative decision has a reason behind it.</p>
+      <p class="section-desc">Most agencies jump straight to making ads. I build a full strategic foundation first so every creative decision has a reason behind it.</p>
     </div>
     <div class="process-steps reveal">
       <div class="process-step">
@@ -786,7 +615,6 @@
   </div>
 </section>
 
-<!-- WORK -->
 <section class="section-pad" id="work">
   <div class="container">
     <div class="reveal" style="margin-bottom: 3.5rem;">
@@ -797,56 +625,52 @@
 
     <div class="work-grid">
 
-      <!-- MEMBY CASE STUDY - WIDE -->
-      <a href="#memby-modal" class="case-card wide reveal" onclick="openModal('memby'); return false;">
+      <!-- STATIC ADS - WIDE FEATURED -->
+      <a href="#" class="case-card wide reveal" onclick="openModal('ads'); return false;">
+        <div class="ad-grid-preview">
+          <div class="ad-thumb"><img src="ads/ad1.png" alt="Ad 1"></div>
+          <div class="ad-thumb"><img src="ads/ad2.png" alt="Ad 2"></div>
+          <div class="ad-thumb"><img src="ads/ad3.png" alt="Ad 3"></div>
+          <div class="ad-thumb"><img src="ads/ad4.png" alt="Ad 4"></div>
+          <div class="ad-thumb"><img src="ads/ad5.png" alt="Ad 5"></div>
+          <div class="ad-thumb"><img src="ads/ad6.png" alt="Ad 6"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Creative</span>
+            <span class="card-year">2026</span>
+          </div>
+          <div class="card-title">Static Ad Concepts — D2C E-commerce</div>
+          <div class="card-desc">Static ad concepts built using AI tools and direct response principles. Hook construction, visual attention, and copy that earns the click.</div>
+          <div class="card-insights">
+            <span class="insight-pill">Direct Response</span>
+            <span class="insight-pill">Hook Writing</span>
+            <span class="insight-pill">D2C</span>
+            <span class="insight-pill">AI-Assisted</span>
+          </div>
+          <div class="card-arrow">See the ads →</div>
+        </div>
+      </a>
+
+      <!-- MEMBY CASE STUDY -->
+      <a href="#" class="case-card reveal" onclick="openModal('memby'); return false;">
         <div class="card-img-placeholder ph-memby">
           <span class="ph-icon">📚</span>
         </div>
         <div class="card-body">
           <div class="card-meta">
             <span class="card-tag">Case Study</span>
-            <span class="card-year">2025</span>
+            <span class="card-year">2026</span>
           </div>
           <div class="card-title">Memby / Digiklasė — Media Buying Assignment</div>
-          <div class="card-desc">
-            A full take-home assignment for an EdTech brand: competitive ad analysis, audience segmentation, creative briefs for three distinct customer avatars, and a funnel breakdown. Delivered under real hiring conditions.
-          </div>
+          <div class="card-desc">A full take-home assignment for an EdTech brand: competitive ad analysis, audience segmentation, creative briefs for three distinct customer avatars, and a funnel breakdown.</div>
           <div class="card-insights">
             <span class="insight-pill">Ad Analysis</span>
             <span class="insight-pill">3 Creative Briefs</span>
             <span class="insight-pill">Funnel Mapping</span>
-            <span class="insight-pill">Audience Segmentation</span>
             <span class="insight-pill">EdTech</span>
           </div>
           <div class="card-arrow">View case study →</div>
-        </div>
-      </a>
-
-      <!-- STATIC ADS -->
-      <a href="#ads-modal" class="case-card reveal" onclick="openModal('ads'); return false;">
-        <div class="ad-grid-preview">
-          <div class="ad-thumb ad1"><span>🛒</span><div class="ad-thumb-label">Hook</div></div>
-          <div class="ad-thumb"><span>💥</span><div class="ad-thumb-label">Pain</div></div>
-          <div class="ad-thumb"><span>✅</span><div class="ad-thumb-label">Solution</div></div>
-          <div class="ad-thumb"><span>🎯</span><div class="ad-thumb-label">CTA</div></div>
-          <div class="ad-thumb"><span>⚡</span><div class="ad-thumb-label">Urgency</div></div>
-          <div class="ad-thumb"><span>🔥</span><div class="ad-thumb-label">Social</div></div>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-tag">Creative</span>
-            <span class="card-year">2025</span>
-          </div>
-          <div class="card-title">Static Ad Concepts — D2C E-commerce</div>
-          <div class="card-desc">
-            Static ad concepts built using AI tools and direct response principles. Hook construction, visual attention, and copy that earns the click.
-          </div>
-          <div class="card-insights">
-            <span class="insight-pill">Hook Testing</span>
-            <span class="insight-pill">Awareness Stages</span>
-            <span class="insight-pill">D2C</span>
-          </div>
-          <div class="card-arrow">See the ads →</div>
         </div>
       </a>
 
@@ -858,12 +682,10 @@
         <div class="card-body">
           <div class="card-meta">
             <span class="card-tag">Full Funnel</span>
-            <span class="card-year">2025</span>
+            <span class="card-year">2026</span>
           </div>
           <div class="card-title">LUMÉ — Shopify Brand Build</div>
-          <div class="card-desc">
-            End-to-end Shopify store built as a course final project. Product pages, homepage, SEO, review system, and brand story — designed as a complete D2C funnel, not just a storefront.
-          </div>
+          <div class="card-desc">End-to-end Shopify store built as a course final project. Product pages, homepage, SEO, review system, and brand story — designed as a complete D2C funnel, not just a storefront.</div>
           <div class="card-insights">
             <span class="insight-pill">Shopify</span>
             <span class="insight-pill">Brand Strategy</span>
@@ -878,7 +700,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section class="about-section section-pad" id="about">
   <div class="container">
     <div class="about-grid">
@@ -930,7 +751,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact-section section-pad" id="contact">
   <div class="container">
     <div class="contact-inner">
@@ -963,28 +783,24 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>© 2026 Aurimas Bučys. Vilnius, Lithuania.</p>
   <div class="footer-mark">AB<span>.</span></div>
 </footer>
 
-<!-- MODAL OVERLAY -->
 <div id="modal-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:999; overflow-y:auto; backdrop-filter:blur(8px);" onclick="closeModal(event)">
-  <div id="modal-box" style="max-width:760px; margin:5vh auto 5vh; background:var(--card-bg); border:1px solid var(--border); border-radius:6px; padding:3rem; position:relative;" onclick="event.stopPropagation()">
+  <div id="modal-box" style="max-width:800px; margin:5vh auto 5vh; background:var(--card-bg); border:1px solid var(--border); border-radius:6px; padding:3rem; position:relative;" onclick="event.stopPropagation()">
     <button onclick="closeModal()" style="position:absolute; top:1.5rem; right:1.5rem; background:none; border:1px solid var(--border); color:var(--muted); padding:0.4rem 0.8rem; border-radius:2px; cursor:pointer; font-family:'Outfit',sans-serif; font-size:0.8rem;">✕ Close</button>
     <div id="modal-content"></div>
   </div>
 </div>
 
 <script>
-  // NAV scroll effect
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
@@ -996,14 +812,10 @@
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
 
-  // Marquee - items already doubled in HTML for seamless loop
-
-  // CV download placeholder
   function downloadCV() {
-    alert('CV coming soon — for now, reach out directly via email or LinkedIn.');
+    alert('CV coming soon — reach out directly via email or LinkedIn for now.');
   }
 
-  // Modal content
   const modalContent = {
     memby: `
       <div style="margin-bottom:0.5rem;">
@@ -1011,17 +823,15 @@
       </div>
       <h2 style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;line-height:1.2;margin:1rem 0 0.75rem;">Memby / Digiklasė</h2>
       <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem;line-height:1.7;">A real take-home assignment submitted as part of a media buyer hiring process for an EdTech platform serving Lithuanian learners.</p>
-
       <div style="border-left:3px solid var(--accent);padding-left:1.25rem;margin-bottom:2rem;">
         <p style="font-size:0.8rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem;">The Challenge</p>
-        <p style="font-size:0.92rem;line-height:1.7;">Analyse the brand's existing ad creative, identify what's working and what isn't, define target audiences, and produce three complete creative briefs — each targeting a different customer avatar.</p>
+        <p style="font-size:0.92rem;line-height:1.7;">Analyse the brand's existing ad creative, identify what's working and what isn't, define target audiences, and produce three complete creative briefs each targeting a different customer avatar.</p>
       </div>
-
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
         <div style="background:var(--bg3);padding:1.25rem;border-radius:3px;border:1px solid var(--border);">
           <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Deliverable 1</div>
           <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;">Competitive Ad Analysis</div>
-          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;line-height:1.6;">Breakdown of their current creative — hooks, angles, what objections each ad addresses, where the funnel breaks down.</p>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;line-height:1.6;">Breakdown of their current creative: hooks, angles, what objections each ad addresses, where the funnel breaks down.</p>
         </div>
         <div style="background:var(--bg3);padding:1.25rem;border-radius:3px;border:1px solid var(--border);">
           <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Deliverable 2</div>
@@ -1036,13 +846,12 @@
         <div style="background:var(--bg3);padding:1.25rem;border-radius:3px;border:1px solid var(--border);">
           <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Deliverable 4</div>
           <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;">Funnel Analysis</div>
-          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;line-height:1.6;">Mapping the full customer journey from cold ad to conversion — identifying drop-off points and improvement opportunities.</p>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;line-height:1.6;">Mapping the full customer journey from cold ad to conversion, identifying drop-off points and improvement opportunities.</p>
         </div>
       </div>
-
-      <div style="background:rgba(244,168,39,0.06);border:1px solid rgba(244,168,39,0.2);border-radius:3px;padding:1.25rem;margin-bottom:1.5rem;">
+      <div style="background:rgba(244,168,39,0.06);border:1px solid rgba(244,168,39,0.2);border-radius:3px;padding:1.25rem;">
         <p style="font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem;">Outcome</p>
-        <p style="font-size:0.9rem;line-height:1.7;">Received a constructive rejection with an explicit invitation to stay in touch — the team noted the quality of strategic thinking in the submission.</p>
+        <p style="font-size:0.9rem;line-height:1.7;">Received a constructive rejection with an explicit invitation to stay in touch. The team noted the quality of strategic thinking in the submission.</p>
       </div>
     `,
     ads: `
@@ -1050,44 +859,35 @@
         <span style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);background:rgba(244,168,39,0.1);padding:0.2rem 0.6rem;border-radius:2px;">Creative · 2026</span>
       </div>
       <h2 style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;line-height:1.2;margin:1rem 0 0.75rem;">Static Ad Concepts</h2>
-      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem;line-height:1.7;">A collection of static ad concepts built using AI tools and direct response principles. The focus is on hook construction, visual attention, and copy that earns the click.</p>
-
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.5rem;">Each concept here starts from a customer insight, not a blank canvas. The creative choices follow from research into what the audience cares about and what they're skeptical of.</p>
-
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:1.5rem;margin-bottom:2rem;">
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem;line-height:1.7;">A collection of static ad concepts built using AI tools and direct response principles. The focus is on hook construction, visual attention, and copy that earns the click.</p>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.75;margin-bottom:2rem;">Each concept starts from a customer insight, not a blank canvas. The creative choices follow from research into what the audience cares about and what they're skeptical of.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:2rem;">
+        <img src="ads/ad1.png" alt="Ad 1" style="width:100%;border-radius:4px;display:block;">
+        <img src="ads/ad2.png" alt="Ad 2" style="width:100%;border-radius:4px;display:block;">
+        <img src="ads/ad3.png" alt="Ad 3" style="width:100%;border-radius:4px;display:block;">
+        <img src="ads/ad4.png" alt="Ad 4" style="width:100%;border-radius:4px;display:block;">
+        <img src="ads/ad5.png" alt="Ad 5" style="width:100%;border-radius:4px;display:block;">
+        <img src="ads/ad6.png" alt="Ad 6" style="width:100%;border-radius:4px;display:block;">
+        <img src="ads/ad7.png" alt="Ad 7" style="width:100%;border-radius:4px;display:block;">
+        <img src="ads/ad8.png" alt="Ad 8" style="width:100%;border-radius:4px;display:block;">
+        <img src="ads/ad9.png" alt="Ad 9" style="width:100%;border-radius:4px;display:block;">
+      </div>
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:1.5rem;">
         <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">The Framework Behind Each Ad</div>
         <div style="display:flex;flex-direction:column;gap:0.75rem;">
           <div style="display:flex;gap:1rem;align-items:flex-start;">
             <span style="color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;min-width:2rem;">01</span>
-            <div><strong style="font-size:0.85rem;">Who is seeing this?</strong><p style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Cold / warm / retargeting — each requires a completely different approach.</p></div>
+            <div><strong style="font-size:0.85rem;">Who is seeing this?</strong><p style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Cold, warm, or retargeting — each requires a completely different approach.</p></div>
           </div>
           <div style="display:flex;gap:1rem;align-items:flex-start;">
             <span style="color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;min-width:2rem;">02</span>
-            <div><strong style="font-size:0.85rem;">What belief needs to shift?</strong><p style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Mapped from the Belief-Shift framework — not generic benefit statements.</p></div>
+            <div><strong style="font-size:0.85rem;">What belief needs to shift?</strong><p style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Mapped from the Belief-Shift framework, not generic benefit statements.</p></div>
           </div>
           <div style="display:flex;gap:1rem;align-items:flex-start;">
             <span style="color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;min-width:2rem;">03</span>
-            <div><strong style="font-size:0.85rem;">What's the hook and why?</strong><p style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Pattern interrupt + relevance to avatar's specific situation.</p></div>
+            <div><strong style="font-size:0.85rem;">What's the hook and why?</strong><p style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Pattern interrupt matched to the avatar's specific situation and language.</p></div>
           </div>
         </div>
-      </div>
-
-      <!-- Replace the dashed placeholder box with: -->
-<div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-bottom:2rem;">
-  <img src="ads/ad1.png" style="width:100%; border-radius:3px;">
-  <img src="ads/ad2.png" style="width:100%; border-radius:3px;">
-  <img src="ads/ad3.png" style="width:100%; border-radius:3px;">
-  <img src="ads/ad4.png" style="width:100%; border-radius:3px;">
-  <img src="ads/ad5.png" style="width:100%; border-radius:3px;">
-  <img src="ads/ad6.png" style="width:100%; border-radius:3px;">
-  <img src="ads/ad7.png" style="width:100%; border-radius:3px;">
-  <img src="ads/ad8.png" style="width:100%; border-radius:3px;">
-  <img src="ads/ad9.png" style="width:100%; border-radius:3px;">
-</div>
-      <div style="border:2px dashed var(--border);border-radius:4px;padding:3rem;text-align:center;margin-bottom:1.5rem;">
-        <div style="font-size:2rem;margin-bottom:0.75rem;">🖼️</div>
-        <p style="font-size:0.85rem;color:var(--muted);">Upload your ad images here in the HTML file.</p>
-        <p style="font-size:0.75rem;color:var(--muted);margin-top:0.4rem;">Replace this placeholder with: &lt;img src="ads/ad1.jpg"&gt; etc.</p>
       </div>
     `
   };
